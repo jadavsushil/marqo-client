@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 
+
 class HomeController extends Controller
 {
     //
@@ -14,7 +15,7 @@ class HomeController extends Controller
         try {
             $response = Http::get(env('HOST_URL').'indexes/my-irst-ix/documents/honey_facts_152');
             dd($response->object());
-        }catch(Exception $e) {
+        }catch(\Throwable $e) {
             echo 'Message: ' .$e->getMessage();
         }
     }
@@ -42,7 +43,7 @@ class HomeController extends Controller
             );
             $response = json_decode($response->getBody(), true);
             dd($response);
-        }catch(Exception $e) {
+        }catch(\Throwable $e) {
             echo 'Message: ' .$e->getMessage();
         }
     }
